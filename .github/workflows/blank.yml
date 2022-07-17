@@ -31,8 +31,9 @@ jobs:
 
       - name: Clone The Secret Mirror Repository
         run: |
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.REPO }} -b ${Branch} source
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.REPO }} -b h-code source
           curl ${{ secrets.CONF }} -o source/config.env
+          
       - name: Compile The Mirroring Docker Container
         run: |
           cd source || exit 1
@@ -41,7 +42,7 @@ jobs:
           docker image ls
       - name: running Docker
         timeout-minutes: 340
-        continue-on-error: true
+        continue-on-error: false
         run: |
           docker run --privileged --rm -i mirror-bot
       - name: Loop Workflow
