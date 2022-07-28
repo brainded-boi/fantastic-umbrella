@@ -10,7 +10,6 @@ env:
   # Change these values if you have forked it for your own works
   GitHubMail: "rehanalt501@gmail.com"
   GitHubName: "iamrehan07" 
-  Branch: "h-code"
 
 jobs:
   build:
@@ -31,7 +30,7 @@ jobs:
 
       - name: Clone The Secret Mirror Repository
         run: |
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.REPO }} -b heroku source
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.REPO }} -b master source
           curl ${{ secrets.CONF }} -o source/config.env
           
       - name: Compile The Mirroring Docker Container
