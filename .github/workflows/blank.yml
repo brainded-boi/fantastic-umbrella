@@ -31,7 +31,7 @@ jobs:
 
       - name: Clone The Secret Mirror Repository
         run: |
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.REPO }} source
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ secrets.REPO }} -b heroku source
           curl ${{ secrets.CONF }} -o source/config.env
           
       - name: Compile The Mirroring Docker Container
